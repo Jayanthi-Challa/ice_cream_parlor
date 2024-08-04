@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seasonal Flavors</title>
+</head>
+
+<body>
+    <h1>Seasonal Flavors</h1>
+    <ul>
+        {% for flavor in flavors %}
+        <li>{{ flavor['name'] }} (Season: {{ flavor['season'] }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

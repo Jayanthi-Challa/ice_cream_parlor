@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ingredients</title>
+</head>
+
+<body>
+    <h1>Ingredients Inventory</h1>
+    <ul>
+        {% for ingredient in ingredients %}
+        <li>{{ ingredient['name'] }} (Stock: {{ ingredient['stock'] }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

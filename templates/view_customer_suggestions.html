@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Suggestions</title>
+</head>
+
+<body>
+    <h1>Customer Suggestions</h1>
+    <ul>
+        {% for suggestion in suggestions %}
+        <li>{{ suggestion['flavor'] }} (Allergens: {{ suggestion['allergens'] }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

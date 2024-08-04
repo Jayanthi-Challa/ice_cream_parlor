@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Allergens</title>
+</head>
+
+<body>
+    <h1>Allergens</h1>
+    <ul>
+        {% for allergen in allergens %}
+        <li>{{ allergen['name'] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

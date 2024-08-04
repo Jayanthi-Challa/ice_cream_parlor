@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Parlor</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ice Cream Parlor</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_seasonal_flavors">View Seasonal Flavors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_ingredients">View Ingredients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_customer_suggestions">View Customer Suggestions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_allergens">View Allergens</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_cart">View Cart</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Add Seasonal Flavor</h2>
+                <form action="/add_seasonal_flavor" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Flavor Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="season" class="form-control" placeholder="Season" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Flavor</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Add Ingredient to Inventory</h2>
+                <form action="/add_ingredient" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Ingredient Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="stock" class="form-control" placeholder="Stock Quantity" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Ingredient</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Add Customer Suggestion</h2>
+                <form action="/add_customer_suggestion" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="text" name="flavor" class="form-control" placeholder="Suggested Flavor" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="allergens" class="form-control"
+                            placeholder="Allergens (comma-separated)" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Suggestion</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Add Allergen</h2>
+                <form action="/add_allergen" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Allergen Name" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Allergen</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Add Flavor to Cart</h2>
+                <form action="/add_to_cart" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="number" name="flavor_id" class="form-control" placeholder="Flavor ID" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
