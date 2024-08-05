@@ -3,17 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Seasonal Flavors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Seasonal Flavors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Seasonal Flavors</h1>
-    <ul>
-        {% for flavor in flavors %}
-        <li>{{ flavor['name'] }} (Season: {{ flavor['season'] }})</li>
-        {% endfor %}
-    </ul>
-    <a href="/">Back to Home</a>
+    <div class="container mt-5">
+        <h2>Seasonal Flavors</h2>
+        <ul class="list-group">
+            {% for flavor in flavors %}
+            <li class="list-group-item">
+                {{ flavor[1] }} (Season: {{ flavor[2] }})
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
 </body>
 
 </html>

@@ -10,7 +10,7 @@
     <h1>Ingredients Inventory</h1>
     <ul>
         {% for ingredient in ingredients %}
-        <li>{{ ingredient['name'] }} (Stock: {{ ingredient['stock'] }})</li>
+        <li>{{ ingredient[1] }} (Stock: {{ ingredient[2] }})</li>
         {% endfor %}
     </ul>
     <a href="/">Back to Home</a>

@@ -10,7 +10,7 @@
     <h1>Your Cart</h1>
     <ul>
         {% for item in cart %}
-        <li>{{ item['name'] }}</li>
+        <li>{{ item[0] }}</li>
         {% endfor %}
     </ul>
     <a href="/">Back to Home</a>

@@ -10,7 +10,6 @@ This Ice Cream Parlor Application allows users to manage seasonal flavors, ingre
 ## Requirements
 
 - Python 3.x
-- SQLite3
 
 ## Setup Instructions
 

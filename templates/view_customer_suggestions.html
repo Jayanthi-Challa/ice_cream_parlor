@@ -10,7 +10,7 @@
     <h1>Customer Suggestions</h1>
     <ul>
         {% for suggestion in suggestions %}
-        <li>{{ suggestion['flavor'] }} (Allergens: {{ suggestion['allergens'] }})</li>
+        <li>{{ suggestion[1] }} (Allergens: {{ suggestion[2] }})</li>
         {% endfor %}
     </ul>
     <a href="/">Back to Home</a>

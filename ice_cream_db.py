@@ -1,41 +1,61 @@
-import sqlite3
+import psycopg2
+from psycopg2 import sql, OperationalError
 
-conn = sqlite3.connect('ice_cream.db')
-cursor = conn.cursor()
+DATABASE_URL = "postgres://postgres:jaya@localhost:5432/ice_cream"
 
-# Create a table for seasonal flavors
-cursor.execute('''CREATE TABLE seasonal_flavors (
-                    id INTEGER PRIMARY KEY,
-                    name TEXT,
-                    season TEXT
-                )''')
+def create_tables():
+    try:
+        # Connect to the PostgreSQL database
+        conn = psycopg2.connect(DATABASE_URL)
+        cursor = conn.cursor()
 
-# Create a table for ingredient inventory
-cursor.execute('''CREATE TABLE ingredient_inventory (
-                    id INTEGER PRIMARY KEY,
-                    name TEXT,
-                    stock INTEGER
-                )''')
+        # Create tables with constraints
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS seasonal_flavors (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                season TEXT NOT NULL
+            )
+        ''')
 
-# Create a table for customer suggestions
-cursor.execute('''CREATE TABLE customer_suggestions (
-                    id INTEGER PRIMARY KEY,
-                    flavor TEXT,
-                    allergens TEXT
-                )''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS ingredient_inventory (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                stock INTEGER NOT NULL CHECK (stock >= 0)
+            )
+        ''')
 
-# Create a table for user's cart
-cursor.execute('''CREATE TABLE user_cart (
-                    id INTEGER PRIMARY KEY,
-                    flavor_id INTEGER,
-                    FOREIGN KEY (flavor_id) REFERENCES seasonal_flavors(id)
-                )''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS customer_suggestions (
+                id SERIAL PRIMARY KEY,
+                flavor TEXT NOT NULL,
+                allergens TEXT
+            )
+        ''')
 
-# Create a table for allergens
-cursor.execute('''CREATE TABLE allergens (
-                    id INTEGER PRIMARY KEY,
-                    name TEXT
-                )''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS user_cart (
+                id SERIAL PRIMARY KEY,
+                flavor_id INTEGER NOT NULL REFERENCES seasonal_flavors(id) ON DELETE CASCADE
+            )
+        ''')
 
-conn.commit()
-conn.close()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS allergens (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL
+            )
+        ''')
+
+        # Commit changes and close connection
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("Tables created successfully")
+
+    except OperationalError as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    create_tables()

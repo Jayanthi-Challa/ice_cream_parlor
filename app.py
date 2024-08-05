@@ -1,5 +1,9 @@
 from flask import Flask, request, render_template, redirect
-from ice_cream_app import add_seasonal_flavor, add_ingredient, add_customer_suggestion, add_allergen, add_to_cart, get_seasonal_flavors, get_ingredients, get_customer_suggestions, get_allergens, get_user_cart
+from ice_cream_app import (
+    add_seasonal_flavor, add_ingredient, add_customer_suggestion, add_allergen, 
+    add_to_cart, get_seasonal_flavors, get_ingredients, get_customer_suggestions, 
+    get_allergens, get_user_cart
+)
 
 app = Flask(__name__)
 
