@@ -1,7 +1,8 @@
 import psycopg2
 from psycopg2 import sql
+import os
 
-DATABASE_URL = "postgres://postgres:jaya@localhost:5432/ice_cream"
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 def get_db_connection():
     try:
