@@ -1,8 +1,7 @@
 import psycopg2
 from psycopg2 import sql, OperationalError
-import os
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = "postgres://postgres:jaya@localhost:5432/ice_cream"
 
 def create_tables():
     try:
